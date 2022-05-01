@@ -25,6 +25,4 @@ def windowize( dataset, ws ):
 
 train_x, train_y = windowize(dataset_train, ws)
 test_x, test_y = windowize(dataset_test, ws)
-
-# looking good?
 plt.show( plt.imshow(train_x[100,:,:],interpolation="none") )

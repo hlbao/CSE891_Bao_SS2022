@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 from sklearn import metrics
 uploaded = files.upload()
 train =pd.read_csv('train.csv',error_bad_lines=False, engine="python")
-#this is revised data after the sliding window
+#this is revised data after the sliding window and noise removal 
 
 uploaded = files.upload()
 test =pd.read_csv('train.csv',error_bad_lines=False, engine="python")

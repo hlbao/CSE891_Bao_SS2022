@@ -6,8 +6,11 @@ import matplotlib.pyplot as plt
 from sklearn import metrics
 uploaded = files.upload()
 train =pd.read_csv('train.csv',error_bad_lines=False, engine="python")
+#this is revised data after the sliding window
+
 uploaded = files.upload()
 test =pd.read_csv('train.csv',error_bad_lines=False, engine="python")
+
 # get X_train and y_train from csv files
 X_train = train.drop(['subject', 'Activity'], axis=1)
 y_train = train.Activity
@@ -125,7 +128,28 @@ from sklearn.model_selection import GridSearchCV
 #log_reg_grid = GridSearchCV(log_reg, param_grid=parameters, cv=3, verbose=1, n_jobs=-1)
 #log_reg_grid_results =  perform_model(log_reg_grid, X_train, y_train, X_test, y_test, class_labels=labels)
 
-parameters = {'C':[0.125, 0.5, 1, 2, 8, 16]}
-lr_svc = LinearSVC(tol=0.00005)
-lr_svc_grid = GridSearchCV(lr_svc, param_grid=parameters, n_jobs=-1, verbose=1)
-lr_svc_grid_results = perform_model(lr_svc_grid, X_train, y_train, X_test, y_test, class_labels=labels)
+#parameters = {'C':[0.125, 0.5, 1, 2, 8, 16]}
+#lr_svc = LinearSVC(tol=0.00005)
+#lr_svc_grid = GridSearchCV(lr_svc, param_grid=parameters, n_jobs=-1, verbose=1)
+#lr_svc_grid_results = perform_model(lr_svc_grid, X_train, y_train, X_test, y_test, class_labels=labels)
+
+#from sklearn.svm import SVC
+#parameters = {'C':[2,8,16],\
+#              'gamma': [ 0.0078125, 0.125, 2]}
+#rbf_svm = SVC(kernel='rbf')
+#rbf_svm_grid = GridSearchCV(rbf_svm,param_grid=parameters, n_jobs=-1)
+#rbf_svm_grid_results = perform_model(rbf_svm_grid, X_train, y_train, X_test, y_test, class_labels=labels)
+
+#from sklearn.tree import DecisionTreeClassifier
+#parameters = {'max_depth':np.arange(4,10,1)}
+#dt = DecisionTreeClassifier()
+#dt_grid = GridSearchCV(dt,param_grid=parameters, n_jobs=-1)
+#dt_grid_results = perform_model(dt_grid, X_train, y_train, X_test, y_test, class_labels=labels)
+#print_grid_search_attributes(dt_grid_results['model'])
+
+from sklearn.ensemble import RandomForestClassifier
+params = {'n_estimators': np.arange(5,101,20), 'max_depth':np.arange(3,12,2)}
+rfc = RandomForestClassifier()
+rfc_grid = GridSearchCV(rfc, param_grid=params, n_jobs=-1)
+rfc_grid_results = perform_model(rfc_grid, X_train, y_train, X_test, y_test, class_labels=labels)
+print_grid_search_attributes(rfc_grid_results['model'])

@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 import matplotlib.image as mpimg
 import numpy as np
-# train ==  (7462, ) last col 
+# train ==  (7352, ) last col 
 dataset_train = np.loadtxt("train.csv",skiprows=1)
 #this is the original data set from Kaggle
 dataset_test = np.loadtxt("test.csv",skiprows=1)

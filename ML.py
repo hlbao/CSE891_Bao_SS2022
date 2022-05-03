@@ -9,7 +9,7 @@ train =pd.read_csv('train.csv',error_bad_lines=False, engine="python")
 #this is revised data after the sliding window and noise removal 
 
 uploaded = files.upload()
-test =pd.read_csv('train.csv',error_bad_lines=False, engine="python")
+test =pd.read_csv('test.csv',error_bad_lines=False, engine="python")
 
 # get X_train and y_train from csv files
 X_train = train.drop(['subject', 'Activity'], axis=1)
